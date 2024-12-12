@@ -152,10 +152,10 @@ def compare_with_providers(df, partner_bpp_ids):
             },
             'market_comparision': {
                 'avg_net_disbursement_amount': f"{df['net_disbursed_amount'].mean():,.2f}",
-                'avg_interest_rate': f"{df["interest_rate"].str.rstrip('%').astype(float).mean():.2f}%",
-                'avg_other_penalty_fee': f"{df["other_penalty_fee"].str.rstrip('%').astype(float).mean():.2f}%",
-                'avg_delay_penalty_fee': f"{df["delay_penalty_fee"].str.rstrip('%').astype(float).mean():.2f}%",
-                'avg_foreclosure_fee': f"{df["foreclosure_fee"].str.rstrip('%').astype(float).mean():.2f}%",
+                'avg_interest_rate': f"{df['interest_rate'].str.rstrip('%').astype(float).mean():.2f}%",
+                'avg_other_penalty_fee': f"{df['other_penalty_fee'].str.rstrip('%').astype(float).mean():.2f}%",
+                'avg_delay_penalty_fee': f"{df['delay_penalty_fee'].str.rstrip('%').astype(float).mean():.2f}%",
+                'avg_foreclosure_fee': f"{df['foreclosure_fee'].str.rstrip('%').astype(float).mean():.2f}%",
                 'avg_annual_percentage_rate': f"{df['annual_percentage_rate'].str.rstrip('%').astype(float).mean():.2f}%",
                 'avg_interest_rate_conversion_charge': f"{df['interest_rate_conversion_charge'].mean():.4f}",
                 'avg_comprehensive_score': f"{df['comprehensive_score'].mean():.4f}"
