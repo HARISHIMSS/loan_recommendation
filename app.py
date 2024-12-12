@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel,Field,field_validator,field_serializer
 from typing import List
-from starlette import status as HttpStatus
+# from starlette import status as HttpStatus
 from datetime import datetime
 from functions.analyze_offers import initiate_dataframe, reformat_dataframe
 from functions.calculate_normalized_score import calculate_normalized_score
@@ -14,10 +14,6 @@ app = FastAPI(
     description = "Loan Recommendation Engine",
     version="0.0.1",
 )
-
-from datetime import datetime
-from pydantic import BaseModel, Field, validator
-import re
 
 class OfferDto(BaseModel):
     id: str = Field(..., title="Offer ID")
