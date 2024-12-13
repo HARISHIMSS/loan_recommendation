@@ -12,7 +12,7 @@ app = FastAPI(
     summary = "Loan Recommendation Engine",
     description = "Loan Recommendation Engine",
     version="0.0.1",
-    root_path="/api/v1"
+    root_path="/loan-recommendation/api/v1"
 )
 
 @app.get("/get_priority_filters")
