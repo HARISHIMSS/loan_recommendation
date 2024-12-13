@@ -12,6 +12,7 @@ app = FastAPI(
     summary = "Loan Recommendation Engine",
     description = "Loan Recommendation Engine",
     version="0.0.1",
+    docs_url="/docs",
     openapi_url="/openapi.json",
     root_path="/api/v1"
 )
