@@ -14,7 +14,7 @@ app = FastAPI(
     version="0.0.1",
     root_path="/api/v1",
     docs_url="/docs",
-    openapi_url="loan-recommendation/api/v1/openapi.json"
+    openapi_url="/loan-recommendation/api/v1/openapi.json"
 )
 
 @app.get("/get_priority_filters")
