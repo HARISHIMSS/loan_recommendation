@@ -1,7 +1,11 @@
 from pydantic import BaseModel,Field,field_validator,field_serializer
 from datetime import datetime
-from typing import List
+from typing import List,Optional
 import re
+
+from helpers.constants.priority_filter import PriorityFilterEnum
+
+
 class OfferDto(BaseModel):
     id: str = Field(..., title="Offer ID")
     bpp_id: str = Field(..., title="BPP ID")
@@ -61,3 +65,4 @@ class priorityProvidersDto(BaseModel):
 class OffersDto(BaseModel):
     offers: List[OfferDto]
     priority_providers:List[priorityProvidersDto]
+    priority_filter:Optional[PriorityFilterEnum] = Field(None,description="prority filter value")
