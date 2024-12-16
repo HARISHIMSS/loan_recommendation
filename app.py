@@ -4,6 +4,7 @@ from functions.analyze_offers import initiate_dataframe, reformat_dataframe
 from functions.calculate_normalized_score import calculate_normalized_score
 from functions.compare_with_providers import compare_with_providers
 from functions.get_output_dict import get_output_dict
+from functions.sorted_df import sorted_df
 from helpers.constants.priority_filter import PriorityFilterEnum
 from helpers.pydantic_models import OffersDto
 
@@ -21,17 +22,17 @@ def get_priority_filters():
 
 @app.post("/analyze_offers")
 async def analyze_offers_api(body:OffersDto):
-    jsonBody = body.model_dump()
-    offersBody =jsonBody["offers"]
-    priorityProvidersArray = jsonBody["priority_providers"]
-    priorityFilterValue = jsonBody["priority_filter"]
-    df = initiate_dataframe(offersBody)
+    json_body = body.model_dump()
+    offers_body =json_body["offers"]
+    priority_providers_array = json_body["priority_providers"]
+    priority_filter_value = json_body["priority_filter"]
+    df = initiate_dataframe(offers_body)
     df = reformat_dataframe(df)
-    rdf = calculate_normalized_score(df,priorityFilterValue)
-    rdf_sorted = rdf.sort_values('comprehensive_score',ascending=False)
+    rdf = calculate_normalized_score(df,priority_filter_value)
+    rdf_sorted = sorted_df(rdf,priority_filter_value)
     results = get_output_dict(rdf_sorted)
-    extractedPriorityProvidersArray = [item['id'] for item in priorityProvidersArray]
-    providers_comparision = compare_with_providers(rdf,extractedPriorityProvidersArray)
+    extracted_priority_providers_array = [item['id'] for item in priority_providers_array]
+    providers_comparision = compare_with_providers(rdf,extracted_priority_providers_array)
     response = {
         "data":results,
         "comparision":providers_comparision
